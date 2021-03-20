@@ -16,6 +16,11 @@
           <ordenes-atrasadas></ordenes-atrasadas>
         </v-col>
       </v-row>
+      <v-row>
+        <v-col>
+          <ultimas-ordenes></ultimas-ordenes>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>
@@ -25,6 +30,7 @@ import Jumbo from '@/components/Jumbo.vue'
 import NavBar from '@/components/NavBar.vue'
 import CumplimientoOrdenes from '@/components/CumplimientoOrdenes.vue'
 import OrdenesAtrasadas from '@/components/OrdenesAtrasadas.vue'
+import UltimasOrdenes from '@/components/UltimasOrdenes.vue'
 
 
 export default {
@@ -34,7 +40,7 @@ export default {
     NavBar,
     CumplimientoOrdenes,
     OrdenesAtrasadas,
-
+    UltimasOrdenes,
   }
 }
 </script>
