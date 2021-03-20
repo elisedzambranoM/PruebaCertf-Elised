@@ -4,7 +4,7 @@
     <v-container>
       <v-row>
         <v-col>
-          <h2>Orden #</h2>
+          <h2>Orden # {{ $route.params.num_orden }}</h2>
         </v-col>
       </v-row>
       <v-row>
@@ -43,7 +43,7 @@
             <v-tab-item>
               <v-card color="basil" flat>
                 <v-card-text>
-                  <!--productos :cumplimientos="cumplimientos"></productos-->
+                  <productos :productos="productos"></productos>
                 </v-card-text>
               </v-card>
             </v-tab-item>
@@ -59,7 +59,7 @@ import NavBar from "@/components/NavBar.vue";
 import General from "@/components/General.vue";
 import axios from 'axios'
 import DatosCliente from "@/components/DatosCliente.vue";
-//import Productos from "@/components/Productos.vue";
+import Productos from "@/components/Productos.vue";
 
 export default {
   name: "DetalleOrden",
@@ -68,7 +68,7 @@ export default {
     NavBar,
     General,
     DatosCliente,
-    //Productos,
+    Productos,
   },
 
   data: () => ({
@@ -84,6 +84,7 @@ export default {
   axios.get('http://localhost:8080/api/detalle_orden.json').then(response => {
     this.orden = response.data.orden
     this.datosCliente = response.data.cliente
+    this.productos = response.data.productos
   })
 }
 };

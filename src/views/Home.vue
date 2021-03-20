@@ -62,7 +62,7 @@ created(){
     this.kpisAtrasados = response.data.kpis[1]
     this.ultimasOrdenes = response.data.utimas_ordenes
     this.ultimasDevoluciones = response.data.ultimas_devoluciones
-    console.log(response.data.ultimas_devoluciones)
+    
   })
 }
   

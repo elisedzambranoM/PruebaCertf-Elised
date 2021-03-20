@@ -175,7 +175,7 @@ export default {
 
   axios.get('http://localhost:8080/api/ordenes.json').then(response => {
     this.ordenes = response.data.ordenes
-    console.log(this.ordenes)
+    
   })
 
 },

@@ -24,14 +24,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="cumplimiento in cumplimientos" :key="cumplimiento.periodo">
-          <td>{{ cumplimiento.periodo }}</td>
-          <td>{{ cumplimiento.venta_unidades }}</td>
-          <td>{{ cumplimiento.venta_pesos }}</td>
-          <td>{{ cumplimiento.meta }}</td>
+        <tr v-for="producto in productos" :key="producto.cod_prod">
+          <td>{{ producto.cod_prod}}</td>
+          <td>{{ producto.descripcion }}</td>
+          <td>{{ producto.precio_unit }}</td>
+          <td>{{ producto.cant_pedido }}</td>
+          <td>{{ producto.cant_pickeado }}</td>
           <td>
             <v-progress-linear
-              :value="porcentaje(cumplimiento.venta_pesos, cumplimiento.meta)"
+              :value="cumplimientoMeta(producto.cant_pickeado, producto.cant_pedido)"
               color="blue-grey"
               height="25"
             >
@@ -50,7 +51,7 @@
 export default {
   name: "Productos",
   props: {
-    cumplimientos: {
+    productos: {
       type: Array,
       required: true,
     },
@@ -58,8 +59,18 @@ export default {
   data: function() {
     return {};
   },
-  // computed: {},
-  methods: {},
+  computed: {
+    
+  },
+  methods: {
+    cumplimientoMeta(cant_pickeado, cant_pedido){
+      let resultado = 0;
+      if(cant_pickeado>0){
+        resultado = (cant_pickeado * 100) / cant_pedido;
+      }
+      return resultado.toFixed(0);
+    }
+  },
   // components: {},
 };
 </script>
