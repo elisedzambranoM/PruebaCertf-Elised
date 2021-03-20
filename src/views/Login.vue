@@ -3,8 +3,8 @@
     <v-row justify="center">
       <v-col md="6">
         <h1>Login</h1>
-        <h2>user: test@test.cl</h2>
-        <h2 class="mb-5">pass: 123</h2>
+        <h2>user: usuario@classicmodels.com</h2>
+        <h2 class="mb-5">password: abc123</h2>
       </v-col>
     </v-row>
     <v-row justify="center">
@@ -24,7 +24,7 @@
               required
             ></v-text-field>
             <v-text-field
-              v-model="pass"
+              v-model="password"
               :rules="[(v) => !!v || 'Contraseña requerida']"
               label="Contraseña"
               :type="showPassword ? 'text' : 'password'"
@@ -63,7 +63,7 @@ export default {
     return {
       valid: true,
       email: "",
-      pass: "",
+      password: "",
       showPassword: false,
       emailRules: [
         (v) => !!v || "Correo requerido",
