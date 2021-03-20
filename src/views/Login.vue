@@ -1,5 +1,12 @@
 <template>
   <v-container>
+    <v-row>
+      <v-col class="contenedor" md="12">
+        <div class="jumbo">
+          <h1 class="nombre-empresa">ClassicModels</h1>
+        </div>
+      </v-col>
+    </v-row>
     <v-row justify="center">
       <v-col md="6">
         <h1>Login</h1>
@@ -16,7 +23,7 @@
             class="text-center formulario"
             lazy-validation
           >
-            <h2><strong>INGRESAR</strong></h2>
+            <h2>Login Usuarios</h2>
             <v-text-field
               v-model="email"
               :rules="emailRules"
@@ -32,6 +39,11 @@
               :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="showPassword = !showPassword"
             ></v-text-field>
+            <v-row>
+              <v-col>
+                Ingrese sus credenciales de usuario
+              </v-col>
+            </v-row>
             <v-btn
               :disabled="!valid"
               color="success"
@@ -111,5 +123,9 @@ export default {
 }
 .formulario-btn {
   margin-top: 2rem;
+}
+.nombre-empresa {
+  color: #287b94;
+  font-family: cursive;
 }
 </style>

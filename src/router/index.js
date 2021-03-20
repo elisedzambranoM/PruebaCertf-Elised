@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import NotFound from '@/views/NotFound.vue'
 import Login from '@/views/Login.vue'
-import About from '@/views/About.vue'
+import About from '@/views/Ordenes.vue'
 import store from '../store'
 
 Vue.use(VueRouter)
@@ -18,14 +18,6 @@ const routes = [
     }
   },
   {
-    path: '/about',
-    name: 'About',
-    component: About,
-    meta:{
-      autenticado:true
-    }
-  },
-  {
     path: '*',
     name: 'NotFound',
     component: NotFound,  
@@ -34,6 +26,11 @@ const routes = [
     path: '/login',
     name: "Login",
     component: Login,
+  },
+  {
+    path: '/ordenes',
+    name: "Ordenes",
+    component: Ordenes,
   },
 ]
 
