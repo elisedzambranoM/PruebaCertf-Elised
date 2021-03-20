@@ -6,7 +6,7 @@
           <h2>Vitrina</h2>
         </div>
         <div>
-          <h2>Bienvenidos</h2>
+          <h2>Bienvenido</h2>
           <p>Bienvenido al sistema de Ordenes e Inventario de ClassicModels.</p>
         </div>
       </v-col>  

@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import NotFound from '@/views/NotFound.vue'
 import Login from '@/views/Login.vue'
 import Ordenes from '@/views/Ordenes.vue'
+import DetalleOrden from '@/views/DetalleOrden.vue'
 import store from '../store'
 
 Vue.use(VueRouter)
@@ -31,6 +32,14 @@ const routes = [
     path: '/ordenes',
     name: "Ordenes",
     component: Ordenes,
+    meta:{
+      autenticado:true
+    }
+  },
+  {
+    path: '/detalle/:num_orden',
+    name: "DetalleOrden",
+    component: DetalleOrden,
     meta:{
       autenticado:true
     }

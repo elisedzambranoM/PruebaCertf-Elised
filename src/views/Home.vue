@@ -20,6 +20,9 @@
         <v-col>
           <ultimas-ordenes></ultimas-ordenes>
         </v-col>
+        <v-col>
+          <ultimas-devoluciones></ultimas-devoluciones>
+        </v-col>
       </v-row>
     </v-container>
   </div>
@@ -31,6 +34,7 @@ import NavBar from '@/components/NavBar.vue'
 import CumplimientoOrdenes from '@/components/CumplimientoOrdenes.vue'
 import OrdenesAtrasadas from '@/components/OrdenesAtrasadas.vue'
 import UltimasOrdenes from '@/components/UltimasOrdenes.vue'
+import UltimasDevoluciones from '@/components/UltimasDevoluciones.vue'
 
 
 export default {
@@ -41,6 +45,7 @@ export default {
     CumplimientoOrdenes,
     OrdenesAtrasadas,
     UltimasOrdenes,
+    UltimasDevoluciones,
   }
 }
 </script>
