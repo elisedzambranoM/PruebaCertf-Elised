@@ -74,8 +74,8 @@ export default {
   data: function() {
     return {
       valid: true,
-      email: "",
-      password: "",
+      email: "usuario@classicmodels.com", //quitar cuando termine
+      password: "abc123", //quitar cuando termine
       showPassword: false,
       emailRules: [
         (v) => !!v || "Correo requerido",

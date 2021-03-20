@@ -8,6 +8,14 @@
           <jumbo/>
         </v-col>
       </v-row>
+      <v-row>
+        <v-col>
+        <cumplimiento-ordenes></cumplimiento-ordenes>
+        </v-col>
+        <v-col>
+          <ordenes-atrasadas></ordenes-atrasadas>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>
@@ -15,13 +23,18 @@
 <script>
 import Jumbo from '@/components/Jumbo.vue'
 import NavBar from '@/components/NavBar.vue'
+import CumplimientoOrdenes from '@/components/CumplimientoOrdenes.vue'
+import OrdenesAtrasadas from '@/components/OrdenesAtrasadas.vue'
 
 
 export default {
   name: 'Home',
   components: {
     Jumbo,
-    NavBar
+    NavBar,
+    CumplimientoOrdenes,
+    OrdenesAtrasadas,
+
   }
 }
 </script>

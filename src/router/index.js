@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import NotFound from '@/views/NotFound.vue'
 import Login from '@/views/Login.vue'
-import About from '@/views/Ordenes.vue'
+import Ordenes from '@/views/Ordenes.vue'
 import store from '../store'
 
 Vue.use(VueRouter)
@@ -31,6 +31,9 @@ const routes = [
     path: '/ordenes',
     name: "Ordenes",
     component: Ordenes,
+    meta:{
+      autenticado:true
+    }
   },
 ]
 
@@ -41,7 +44,6 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to,from,next)=>{
-  console.log('yo em ejecuto cada vez cambio de ruta')
   let user = store.state.token;
   
   console.log(to)
