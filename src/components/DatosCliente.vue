@@ -1,73 +1,49 @@
 <template>
-  <v-simple-table>
-    <template v-slot:default>
-      <thead>
-        <tr>
-          <th class="text-left">
-            Nombre
-          </th>
-          <th class="text-left">
-            RUT
-          </th>
-          <th class="text-left">
-            Dirección Entrega
-          </th>
-          <th class="text-left">
-            Contacto
-          </th>
-          <th class="text-left">
-            Fono
-          </th>
-          <th class="text-left">
-            Email
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="cliente in cartera" :key="cliente.id_cliente">
-          <td>{{ cliente.id_cliente }}</td>
-          <td>{{ cliente.nombre }}</td>
-          <td>{{ cliente.Segmento }}</td>
-          <td>{{ cliente.venta }}</td>
-          <td>{{ cliente.meta }}</td>
-          <td>
-            <v-progress-linear
-              :value="porcentaje(cliente.venta, cliente.meta)"
-              color="blue-grey"
-              height="25"
-            >
-              <template v-slot:default="{ value }">
-                <strong>{{ Math.ceil(value) }}%</strong>
-              </template>
-            </v-progress-linear>
-          </td>
-        </tr>
-      </tbody>
-    </template>
-  </v-simple-table>
+  <div class="grilla">
+    <div class="labels">Nombre</div>
+    <div class="labels">{{cliente.nombre}}</div>
+    <div class="labels">RUT</div>
+    <div class="labels">{{cliente.rut_n}} - {{cliente.rut_dv}}</div>
+    <div class="labels">Dirección Entrega</div>
+    <div class="labels">{{cliente.direccion_entrega}}</div>
+    <div class="labels">Contacto</div>
+    <div class="labels">{{cliente.contacto}}</div>
+    <div class="labels">Fono</div>
+    <div class="labels">{{cliente.fono}}</div>
+    <div class="labels">Email</div>
+    <div class="labels">{{cliente.email}}</div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "DatosCliente",
+  name: 'DatosCliente',
   props: {
-    cartera: {
-      type: Array,
+    cliente:{
+      type: Object,
       required: true,
     },
   },
-  data: function() {
-    return {};
+  data: function(){
+    return {}
   },
   // computed: {},
   methods: {
     // -- Metodos
-    porcentaje(venta, meta) {
-      return (venta * 100) / meta;
-    },
   },
   // components: {},
-};
+}
 </script>
 
-<style scoped></style>
+<style scoped>
+  .grilla{
+    display:grid;
+    grid-template-columns: .5fr 2fr;
+    margin-top:20px;
+  }
+  .labels{
+    color:rgb(71, 71, 71);
+    padding: 8px;
+    font-size: 1.1rem;
+  }
+</style>

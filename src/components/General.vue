@@ -1,19 +1,19 @@
 <template>
   <div class="grilla">
     <div class="labels">N° Orden</div>
-    <div class="labels">{{vendedor.id}}</div>
+    <div class="labels">{{orden.num_orden}}</div>
     <div class="labels">Monto Orden</div>
-    <div class="labels">{{vendedor.nombre}}</div>
+    <div class="labels">{{orden.monto}}</div>
     <div class="labels">Cant. Productos</div>
-    <div class="labels">{{vendedor.email}}</div>
+    <div class="labels">{{orden.cant_productos}}</div>
     <div class="labels">Fecha Entrega</div>
-    <div class="labels">{{vendedor.fono}}</div>
+    <div class="labels">{{orden.fecha_entrega}}</div>
     <div class="labels">Vendedor</div>
-    <div class="labels">{{vendedor.oficina}}</div>
+    <div class="labels">{{orden.vendedor}}</div>
     <div class="labels">Estado</div>
-    <div class="labels">{{vendedor.Manager}}</div>
+    <div class="labels">{{orden.estado}}</div>
     <div class="labels">Avance Preparación</div>
-    <div class="labels">{{vendedor.Manager}}</div>
+    <div class="labels">{{orden.avance_preparacion}}</div>
   </div>
 </template>
 
@@ -21,7 +21,7 @@
 export default {
   name: 'General',
   props: {
-    vendedor:{
+    orden:{
       type: Object,
       required: true,
     },
