@@ -54,9 +54,8 @@ computed: {
     porcentaje(){
       let resultado = 0;
       if(this.entregas>0){
-        console.log("calcular", this.entregas, this.pendientes)
         resultado = ( parseInt(this.entregas * 100)) / (parseInt(this.entregas) + parseInt(this.pendientes));
-        console.log(resultado)
+        
       }
       return resultado.toFixed(0);
     }

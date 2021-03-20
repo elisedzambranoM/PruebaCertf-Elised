@@ -24,10 +24,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="producto in ranking" :key="producto.id">
-                <td>{{ producto.id }}</td>
-                <td>{{ producto.producto }}</td>
-                <td>{{ producto.unidades }}</td>
+              <tr v-for="devolucion in devoluciones" :key="devolucion.num_orden">
+                <td>{{ devolucion.num_orden }}</td>
+                <td>{{ devolucion.cliente }}</td>
+                <td>{{ devolucion.fecha_entrega }}</td>
+                <td>{{ devolucion.estado }}</td>
                 <td>
                   <v-btn x-small color="info" dark>
                     Ver Detalle
@@ -45,33 +46,9 @@
 <script>
 export default {
   name: "UltimasDevoluciones",
-
-  data() {
-    return {
-      ranking: [
-        {
-          id: "54321",
-          producto: "Placa Madre Asus",
-          unidades: 137,
-        },
-        {
-          id: "54320",
-          producto: "Porcesador Intel",
-          unidades: 98,
-        },
-        {
-          id: "54322",
-          producto: "SSD Western",
-          unidades: 122,
-        },
-        {
-          id: "5432",
-          producto: "Corsair RAM 32",
-          unidades: 95,
-        },
-      ],
-    };
-  },
+props:{
+  devoluciones: Array,
+}
 };
 </script>
 

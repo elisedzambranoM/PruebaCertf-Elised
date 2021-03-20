@@ -99,7 +99,6 @@ export default {
       axios
         .get("http://localhost:8080/api/login.json")
         .then((resp) => {
-          console.log(resp.data);
           let user = resp.data;
           if (user.email == this.email && user.pass == this.pass) {
             this.setUserData(user);

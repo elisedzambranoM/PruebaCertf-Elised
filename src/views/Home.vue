@@ -18,10 +18,10 @@
       </v-row>
       <v-row>
         <v-col>
-          <ultimas-ordenes></ultimas-ordenes>
+          <ultimas-ordenes :ordenes="ultimasOrdenes"></ultimas-ordenes>
         </v-col>
         <v-col>
-          <ultimas-devoluciones></ultimas-devoluciones>
+          <ultimas-devoluciones :devoluciones="ultimasDevoluciones"></ultimas-devoluciones>
         </v-col>
       </v-row>
     </v-container>
@@ -52,13 +52,17 @@ export default {
   data: () => ({
    kpisDiario: {},
    kpisAtrasados: {},
+   ultimasOrdenes: [],
+   ultimasDevoluciones: [],
   }),
   
 created(){
   axios.get('http://localhost:8080/api/dashboard.json').then(response => {
     this.kpisDiario = response.data.kpis[0]
     this.kpisAtrasados = response.data.kpis[1]
-    console.log(this.kpisDiario)
+    this.ultimasOrdenes = response.data.utimas_ordenes
+    this.ultimasDevoluciones = response.data.ultimas_devoluciones
+    console.log(response.data.ultimas_devoluciones)
   })
 }
   

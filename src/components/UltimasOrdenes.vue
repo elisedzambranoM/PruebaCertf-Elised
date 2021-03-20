@@ -27,11 +27,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="vendedor in ranking" :key="vendedor.id">
-                <td>{{ vendedor.id }}</td>
-                <td>{{ vendedor.vendedor }}</td>
-                <td>{{ vendedor.monto }}</td>
-                <td>{{ vendedor.unidades }}</td>
+              <tr v-for="ultima in ordenes" :key="ultima.num_orden">
+                <td>{{ ultima.num_orden }}</td>
+                <td>{{ ultima.cliente }}</td>
+                <td>{{ ultima.fecha_entrega }}</td>
+                <td>{{ ultima.estado }}</td>
                 <td>
                   <v-btn x-small color="info" dark>
                     Ver Detalle
@@ -50,37 +50,11 @@
 export default {
   name: "UltimasOrdenes",
 
-  data() {
-    return {
-      ranking: [
-        {
-          id: "1",
-          vendedor: "Matias Matamala",
-          monto: "7.357.213",
-          unidades: 237,
-        },
-        {
-          id: "2",
-          vendedor: "Rosita Rosas",
-          monto: "7.357.213",
-          unidades: 237,
-        },
-        {
-          id: "3",
-          vendedor: "Ned Flander",
-          monto: "7.357.213",
-          unidades: 237,
-        },
-        {
-          id: "4",
-          vendedor: "Lisa Perez",
-          monto: "7.357.213",
-          unidades: 237,
-        },
-        
-      ],
-    };
-  },
+  props:{
+  ordenes: Array,
+  }
+
+ 
 };
 </script>
 

@@ -55,7 +55,6 @@ const router = new VueRouter({
 router.beforeEach((to,from,next)=>{
   let user = store.state.token;
   
-  console.log(to)
   let private_rute = to.matched.some(record=> record.meta.autenticado)
 
   if(private_rute && !user){

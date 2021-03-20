@@ -16,7 +16,6 @@ export default new Vuex.Store({
   },
   actions: {
     setUserData: ({commit}, data)=>{
-      console.log(data)
       commit('SET_USER_DATA',data);
 
     }
