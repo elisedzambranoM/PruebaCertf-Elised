@@ -4,13 +4,13 @@
       <v-col>
         <div>
           <p>Oficina</p>
-          <v-select sm="4" :items="items" label="Seleccione..."></v-select>
+          <v-select sm="4" :items="oficina" label="Seleccione..."></v-select>
         </div>
       </v-col>
       <v-col>
         <div>
           <p>Estado</p>
-          <v-select sm="4" :items="items" label="Seleccione..."></v-select>
+          <v-select sm="4" :items="estado" label="Seleccione..."></v-select>
         </div>
       </v-col>
       <v-col>
@@ -107,28 +107,27 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="vendedor in ranking" :key="vendedor.id">
-                <td>{{ vendedor.num_orden }}</td>
-                <td>{{ vendedor.vendedor }}</td>
-                <td>{{ vendedor.ventaUnidades }}</td>
-                <td>{{ vendedor.ventaPesos }}</td>
-                <td>{{ vendedor.metaVta }}</td>
+              <tr v-for="orden in ordenes" :key="orden.num_orden">
+                <td>{{ orden.num_orden }}</td>
+                <td>{{ orden.cliente }}</td>
+                <td>{{ orden.monto}}</td>
+                <td>{{ orden.cant_productos }}</td>
+                <td>{{ orden.fecha_entrega }}</td>
                 <td>
                   <v-progress-linear
-                    v-model="power"
+                    v-model="orden.avance_preparacion"
                     color="info"
                     class="grafico"
                     height="25"
                   ></v-progress-linear>
                 </td>
-                <td>{{ vendedor.estado }}</td>
+                <td>{{ orden.estado}}</td>
                 <td>
-                  <!-- cambiar el redirect-->
                   <v-btn
                     x-small
                     color="info"
                     dark
-                    @click="redirect(vendedor.num_orden)"
+                    @click="redirect(orden.num_orden)"
                   >
                     Ver Detalle
                   </v-btn>
@@ -148,55 +147,38 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "MonitorOrdenes",
 
   data: () => ({
-    items: ["Foo", "Bar", "Fizz", "Buzz"],
+    estado: [],
+    oficina: [],
+    ordenes: [],
 
     date: new Date().toISOString().substr(0, 10),
     menu: false,
     modal: false,
     menu2: false,
-
-    ranking: [
-      {
-        num_orden: "1",
-        vendedor: "Juan Valdez",
-        ventaUnidades: 130,
-        ventaPesos: 154000,
-        metaVta: 1500000,
-        estado: "Ingresado",
-      },
-      {
-        num_orden: "2",
-        vendedor: "Rosita Rosas",
-        ventaUnidades: 160,
-        ventaPesos: 1540000,
-        metaVta: 1500000,
-        estado: "Preparación",
-      },
-      {
-        num_orden: "3",
-        vendedor: "Luis Enrique",
-        ventaUnidades: 560,
-        ventaPesos: 153500,
-        metaVta: 188000,
-        estado: "Preparación",
-      },
-      {
-        num_orden: "4",
-        vendedor: "Lisa Perez",
-        ventaUnidades: 590,
-        ventaPesos: 153000,
-        metaVta: 288000,
-        estado: "Ingresado",
-      },
-    ],
-    power: 55,
-
+  
     page: 1,
   }),
+
+  created(){
+  axios.get('http://localhost:8080/api/estados.json').then(response => {
+    this.estado = response.data.estados.map(i=>i.name)
+  })
+
+ axios.get('http://localhost:8080/api/oficinas.json').then(response => {
+    this.oficina = response.data.oficinas.map(i=>i.name)
+  })
+
+  axios.get('http://localhost:8080/api/ordenes.json').then(response => {
+    this.ordenes = response.data.ordenes
+    console.log(this.ordenes)
+  })
+
+},
 
   methods: {
     redirect(id) {
