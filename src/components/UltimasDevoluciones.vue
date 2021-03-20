@@ -65,7 +65,7 @@ export default {
           unidades: 122,
         },
         {
-          id: "54321",
+          id: "5432",
           producto: "Corsair RAM 32",
           unidades: 95,
         },

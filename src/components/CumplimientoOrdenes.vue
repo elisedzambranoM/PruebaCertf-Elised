@@ -2,7 +2,7 @@
   <v-container class="contenedor">
     <v-row>
       <v-col class="titulo">
-        <h2>Cumplimientos Diario de Ordenes</h2>
+        <h2>{{nombre}}</h2>
       </v-col>
     </v-row>
     <v-row>
@@ -10,11 +10,11 @@
         <div class="grafico">
           <v-progress-circular
             class="mt-0"
-            :value="50"
+            :value="porcentaje"
             color="success darken-2"
             :size="70"
           >
-            <div class="porcentaje">50%</div>
+            <div class="porcentaje">{{porcentaje}}%</div>
           </v-progress-circular>
         </div>
         <div class="detalle_valor">
@@ -22,11 +22,11 @@
         </div>
       </v-col>
       <v-col>
-        <div class="valor">1500</div>
+        <div class="valor">{{entregas}}</div>
         <div class="detalle_valor">Ordenes <br> Entregadas</div>
       </v-col>
       <v-col>
-        <div class="valor">500</div>
+        <div class="valor">{{pendientes}}</div>
         <div class="detalle_valor">
           Ordenes <br />
           Pendientes
@@ -43,9 +43,24 @@ export default {
 
 props:{
 nombre: String,
-entregas: Number,
-pendientes: Number,
+entregas: String,
+pendientes: String,
 },
+
+data: () =>({
+  }),
+
+computed: {
+    porcentaje(){
+      let resultado = 0;
+      if(this.entregas>0){
+        console.log("calcular", this.entregas, this.pendientes)
+        resultado = ( parseInt(this.entregas * 100)) / (parseInt(this.entregas) + parseInt(this.pendientes));
+        console.log(resultado)
+      }
+      return resultado.toFixed(0);
+    }
+  },
 
   
 };

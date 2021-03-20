@@ -10,10 +10,10 @@
       </v-row>
       <v-row>
         <v-col>
-        <cumplimiento-ordenes></cumplimiento-ordenes>
+        <cumplimiento-ordenes :nombre="kpisDiario.nombre" :entregas="kpisDiario.entregadas" :pendientes="kpisDiario.pendientes"></cumplimiento-ordenes>
         </v-col>
         <v-col>
-          <ordenes-atrasadas></ordenes-atrasadas>
+          <ordenes-atrasadas :nombre="kpisAtrasados.nombre" :totales="kpisAtrasados.totales" :atrasadas="kpisAtrasados.atrasadas"></ordenes-atrasadas>
         </v-col>
       </v-row>
       <v-row>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Jumbo from '@/components/Jumbo.vue'
 import NavBar from '@/components/NavBar.vue'
 import CumplimientoOrdenes from '@/components/CumplimientoOrdenes.vue'
@@ -46,6 +47,20 @@ export default {
     OrdenesAtrasadas,
     UltimasOrdenes,
     UltimasDevoluciones,
-  }
+  },
+    
+  data: () => ({
+   kpisDiario: {},
+   kpisAtrasados: {},
+  }),
+  
+created(){
+  axios.get('http://localhost:8080/api/dashboard.json').then(response => {
+    this.kpisDiario = response.data.kpis[0]
+    this.kpisAtrasados = response.data.kpis[1]
+    console.log(this.kpisDiario)
+  })
+}
+  
 }
 </script>
